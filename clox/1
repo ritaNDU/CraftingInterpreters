@@ -1,0 +1,49 @@
+#include <stdlib.h>
+
+
+typedef struct Node Node;
+struct Node{
+	Node* next;
+	Node* previous;
+	int value;
+};
+
+Node createNode(Node* next, Node* previous, int value){
+	Node newNode = {next, previous, value};
+	return newNode;
+}
+
+void printList(Node* head){
+	Node* current = head;
+	for(; current != NULL; current=current->next)
+		printf("%i ",current->value);
+	
+}
+
+void insert(Node* head, Node* toInsert, int index){
+	Node* current = head;
+	
+	toInsert->next = current->next;
+	current->next = toInsert;
+	toInsert->previous = current;	
+}
+
+int main(){
+	Node list = {NULL, NULL, 1};
+	Node* head = &list;
+
+	Node toInsert = {NULL, NULL, 2};
+	insert(head, &toInsert, 1);	
+	
+	Node node[20] = {};
+	for(int i = 0; i < 20; i++){
+		node[0] = createNode(NULL, NULL, 3);
+		insert(head, &node[0], 1);
+	}
+	
+	printList(head);
+	
+	return 0;
+}
+
+
