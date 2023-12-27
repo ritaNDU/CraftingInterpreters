@@ -1,5 +1,5 @@
 #include <stdlib.h>
-
+#include <stdio.h>
 
 typedef struct Node Node;
 struct Node{
@@ -63,5 +63,3 @@ int main(){
 	
 	return 0;
 }
-
-
